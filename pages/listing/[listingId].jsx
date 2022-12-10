@@ -1,25 +1,27 @@
-import axios from 'axios';
 import { useRouter } from 'next/router';
-import React, { useEffect, useState } from 'react';
 import RiSlider from '../../components/RiSlider';
+import { data } from '../../components/listing.js';
 
 const SingleListing = () => {
   const { query } = useRouter();
 
-  const [data, setdata] = useState(null);
+  // const [data, setdata] = useState(null);
 
-  useEffect(() => {
-    axios
-      .get(`http://localhost:4000/listing/${query.listingId}`)
-      .then((res) => setdata(res.data))
-      .catch((err) => console.log(err));
-  }, [query.listingId]);
+  // useEffect(() => {
+  //   axios
+  //     .get(`http://localhost:4000/listing/${query.listingId}`)
+  //     .then((res) => setdata(res.data))
+  //     .catch((err) => console.log(err));
+  // }, [query.listingId]);
 
-  const sliderImages = data?.Media?.map((el) => {
+  const thisPageData = data.value.find(
+    (el) => el.ListingId === query.listingId
+  );
+  const sliderImages = thisPageData?.Media?.map((el) => {
     return el.MediaURL;
   });
 
-  console.log('data', sliderImages);
+  // console.log('data', sliderImages);
 
   return (
     <div>
@@ -27,16 +29,16 @@ const SingleListing = () => {
         <RiSlider items={sliderImages || []} />
         <div>
           <h1 className="font-bold text-gray-800 text-4xl ">
-            #{data?.ListingId}
+            #{thisPageData?.ListingId}
           </h1>
-          <p className="mb-5 text-gray-500">{data?.Directions}</p>
+          <p className="mb-5 text-gray-500">{thisPageData?.Directions}</p>
 
           <h2 className="text-lg font-bold text-gray-600">Public Remarks</h2>
-          <p className="text-gray-700">{data?.PublicRemarks}</p>
+          <p className="text-gray-700">{thisPageData?.PublicRemarks}</p>
 
           <h2 className="text-lg font-bold text-gray-600 mt-5">Room Types</h2>
           <ul className="mb-5 grid grid-cols-2 list-disc list-inside text-gray-700">
-            {data?.RoomType?.map((el, i) => (
+            {thisPageData?.RoomType?.map((el, i) => (
               <li key={i}>{el}</li>
             ))}
           </ul>
@@ -48,8 +50,8 @@ const SingleListing = () => {
       </h1>
 
       <div className="text-gray-800 grid md:grid-cols-2 gap-5">
-        {data &&
-          Object.entries(data).map((el, i) => {
+        {thisPageData &&
+          Object.entries(thisPageData).map((el, i) => {
             return (
               (typeof el[1] === 'string' || typeof el[1] === 'number') && (
                 <div key={i} className="border-b py-2">

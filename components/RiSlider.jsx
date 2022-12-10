@@ -109,8 +109,8 @@ const RiSlider = ({ items }) => {
       >
         {items.map((el, i) => (
           <Image
-            width={400}
-            height={400}
+            width={1000}
+            height={1000}
             onClick={() => setSelected(i)}
             key={i}
             src={el}
