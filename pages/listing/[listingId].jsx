@@ -23,7 +23,7 @@ const SingleListing = () => {
 
   return (
     <div>
-      <div className="flex [&>div]:flex-1 items-center space-x-5">
+      <div className="flex [&>div]:flex-1 items-center space-x-5 border-b">
         <RiSlider items={sliderImages || []} />
         <div>
           <h1 className="font-bold text-gray-800 text-4xl ">
@@ -43,7 +43,9 @@ const SingleListing = () => {
         </div>
       </div>
 
-      <h1 className="font-bold text-2xl my-5 text-blue-600">Full Details</h1>
+      <h1 className="font-bold text-3xl mb-5 mt-20 text-blue-600">
+        Full Details
+      </h1>
 
       <div className="text-gray-800 grid md:grid-cols-2 gap-5">
         {data &&
