@@ -2,6 +2,7 @@ import Link from 'next/link';
 import React from 'react';
 
 const Header = () => {
+  //this is header
   return (
     <div className="py-5 flex items-center space-x-4">
       <Link href="/" className="bg-blue-500 text-white font-bold px-2 py-2">
