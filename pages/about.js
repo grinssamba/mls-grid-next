@@ -2,7 +2,7 @@ import Image from 'next/image';
 import Header from '../components/Header';
 import ad from '../public/images/AD.jpg';
 import bing from '../public/images/bing.png';
-import cd from '../public/images/cb.jpg';
+import cd from '../public/images/CB.jpg';
 import cnn from '../public/images/cnn.png';
 import dailyMail from '../public/images/dailyMail.png';
 import forbes from '../public/images/forbes.webp';
