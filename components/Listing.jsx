@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import ListingCard from './ListingCard';
-import { data } from './listing.js';
+import { data } from './listingsData.js';
 
 const Listing = () => {
   // // const [data, setdata] = useState([]);
@@ -26,32 +26,12 @@ const Listing = () => {
       {/* {loading ? (
         <h1>Loading... </h1>
       ) : ( */}
-      <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-10">
+      <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-x-[12px] gap-y-[60px]">
         {data?.value.map((el, i) => (
           <ListingCard key={i} data={el} />
         ))}
       </div>
       {/* )} */}
-      <br />
-
-      {/* <div className="my-5 py-5 text-center border-t">
-        <div className="w-fit mx-auto">
-          <h3 className="text-gray-600 font-bold mb-2">Page No</h3>
-          <div className="flex gap-4 flex-wrap justify-center">
-            {new Array(10).fill(null).map((el, i) => (
-              <div
-                key={i}
-                onClick={() => setpage(i + 1)}
-                className={`rounded bg-blue-500 hover:bg-blue-400 text-white font-bold px-3 cursor-pointer py-1 ${
-                  i + 1 === page ? 'bg-gray-400' : ''
-                }`}
-              >
-                {i + 1}
-              </div>
-            ))}
-          </div>
-        </div>
-      </div> */}
     </>
   );
 };
